@@ -1,0 +1,205 @@
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { 
+  Home, 
+  Calendar, 
+  Bell, 
+  HelpCircle, 
+  FileText, 
+  Heart,
+  Menu,
+  X,
+  LogOut,
+  User,
+  ChevronDown,
+  Link2
+} from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { Avatar, AvatarFallback } from '../components/ui/avatar';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '../components/ui/dropdown-menu';
+import { GlobalSearch } from './GlobalSearch';
+import { useAuth } from '../contexts/AuthContext';
+import { mockUsers } from '../data/mockData';
+import { ImageWithFallback } from './figma/ImageWithFallback';
+
+export function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { currentUser, login, logout } = useAuth();
+  const location = useLocation();
+
+  const navigation = [
+    { name: 'Início', href: '/', icon: Home },
+    { name: 'Eventos', href: '/events', icon: Calendar },
+    { name: 'Comunicados', href: '/announcements', icon: Bell },
+    { name: 'Acesso Rápido', href: '/quick-links', icon: Link2 },
+    { name: 'FAQ', href: '/faq', icon: HelpCircle },
+    { name: 'Documentos', href: '/documents', icon: FileText },
+    { name: 'RH', href: '/hr', icon: Heart },
+  ];
+
+  const isActive = (href: string) => {
+    return location.pathname === href;
+  };
+
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(n => n[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
+  return (
+    <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3">
+            <div className="size-10 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-green-700">
+              <ImageWithFallback 
+                src="https://images.unsplash.com/photo-1596394723541-3555aa6b843a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnb3Zlcm5tZW50JTIwc2hpZWxkJTIwZW1ibGVtJTIwZ3JlZW58ZW58MXx8fHwxNzcxOTM5MjI2fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="IPAJM-ES Logo"
+                className="size-full object-cover"
+              />
+            </div>
+            <div className="hidden sm:block">
+              <div className="font-bold text-lg leading-none">IPAJM-ES</div>
+              <div className="text-xs text-muted-foreground">Portal Inteligente</div>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1">
+            {navigation.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    isActive(item.href)
+                      ? 'bg-primary text-primary-foreground'
+                      : 'hover:bg-accent'
+                  }`}
+                >
+                  <Icon className="size-4" />
+                  {item.name}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Search and User Menu */}
+          <div className="flex items-center gap-4">
+            <div className="hidden md:block">
+              <GlobalSearch />
+            </div>
+
+            {currentUser && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center gap-2">
+                    <Avatar className="size-8">
+                      <AvatarFallback className="bg-primary text-primary-foreground text-sm">
+                        {getInitials(currentUser.name)}
+                      </AvatarFallback>
+                    </Avatar>
+                    <span className="hidden sm:inline text-sm">
+                      {currentUser.name}
+                    </span>
+                    <ChevronDown className="size-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>
+                    <div className="flex flex-col">
+                      <span>{currentUser.name}</span>
+                      <span className="text-xs font-normal text-muted-foreground">
+                        {currentUser.sector}
+                      </span>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">
+                    Mudar perfil
+                  </DropdownMenuLabel>
+                  {mockUsers.map((user) => (
+                    <DropdownMenuItem
+                      key={user.id}
+                      onClick={() => login(user.id)}
+                      className={currentUser.id === user.id ? 'bg-accent' : ''}
+                    >
+                      <User className="mr-2 size-4" />
+                      <div className="flex flex-col">
+                        <span className="text-sm">{user.name}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {user.profile.toUpperCase()}
+                        </span>
+                      </div>
+                    </DropdownMenuItem>
+                  ))}
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={logout}>
+                    <LogOut className="mr-2 size-4" />
+                    Sair
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
+
+            {/* Mobile menu button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="lg:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? (
+                <X className="size-5" />
+              ) : (
+                <Menu className="size-5" />
+              )}
+            </Button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden border-t py-4">
+            <div className="md:hidden mb-4">
+              <GlobalSearch />
+            </div>
+            <nav className="flex flex-col gap-2">
+              {navigation.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-md text-sm font-medium transition-colors ${
+                      isActive(item.href)
+                        ? 'bg-primary text-primary-foreground'
+                        : 'hover:bg-accent'
+                    }`}
+                  >
+                    <Icon className="size-5" />
+                    {item.name}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+}
