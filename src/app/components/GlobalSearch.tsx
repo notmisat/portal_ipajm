@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { Input } from '../components/ui/input';
 import {
@@ -16,24 +16,38 @@ import { filterByProfile, searchItems } from '../utils/helpers';
 export function GlobalSearch() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
+  const [debouncedQuery, setDebouncedQuery] = useState('');
   const { currentUser } = useAuth();
 
-  const handleSearch = (value: string) => {
-    setQuery(value);
-    if (value.length >= 2) {
+  // Envia pesquisa automaticamente
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedQuery(query);
+    }, 2000); // Espera 2000ms depois do usuário parar de digitar
+
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  // Abre/fecha diálogo com base no comprimeto da consulta
+  useEffect(() => {
+    if (debouncedQuery.length >= 2) {
       setOpen(true);
     } else {
       setOpen(false);
     }
+  }, [debouncedQuery]);
+
+  const handleSearch = (value: string) => {
+    setQuery(value);
   };
 
   const userLinks = currentUser ? filterByProfile(quickLinks, currentUser) : [];
   
-  const searchResults = query.length >= 2 ? {
-    links: searchItems(userLinks, query).slice(0, 3),
-    announcements: searchItems(mockAnnouncements, query).slice(0, 3),
-    faqs: searchItems(mockFAQs, query).slice(0, 3),
-    documents: searchItems(mockDocuments, query).slice(0, 3),
+  const searchResults = debouncedQuery.length >= 2 ? {
+    links: searchItems(userLinks, debouncedQuery).slice(0, 3),
+    announcements: searchItems(mockAnnouncements, debouncedQuery).slice(0, 3),
+    faqs: searchItems(mockFAQs, debouncedQuery).slice(0, 3),
+    documents: searchItems(mockDocuments, debouncedQuery).slice(0, 3),
   } : null;
 
   const hasResults = searchResults && (
@@ -61,15 +75,22 @@ export function GlobalSearch() {
           <DialogHeader>
             <DialogTitle>Resultados da Busca</DialogTitle>
             <DialogDescription>
-              Buscando por "{query}"
+              {query.length < 2 
+                ? `Digite pelo menos 2 caracteres para buscar (${query.length}/2)`
+                : `Buscando por "${debouncedQuery}"`
+              }
             </DialogDescription>
           </DialogHeader>
 
-          {!hasResults && (
+          {query.length < 2 ? (
+            <div className="text-center py-8 text-muted-foreground">
+              Continue digitando para ver os resultados...
+            </div>
+          ) : !hasResults ? (
             <div className="text-center py-8 text-muted-foreground">
               Nenhum resultado encontrado
             </div>
-          )}
+          ) : null}
 
           {searchResults && (
             <div className="space-y-6">
