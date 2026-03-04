@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/portal_ipajm/', 
   plugins: [
     // NÃO remova os plugins React e Tailwind, mesmo se Tailwind não estiver em uso!
     react(),
