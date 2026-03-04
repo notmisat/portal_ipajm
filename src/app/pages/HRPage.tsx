@@ -108,14 +108,14 @@ export function HRPage() {
 
       {/* Benefits Overview */}
       <div>
-        <h2 className="text-2xl font-bold mb-6">Principais Benefícios</h2>
+        <h2 className="text-2x font-bold mb-6">Principais Benefícios</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
-              <Card key={index}>
-                <CardHeader>
-                  <div className="flex items-start gap-4">
+              <Card key={index} className="h-full">
+                <CardHeader className="h-full">
+                  <div className="flex items-center gap-4 justify-center">
                     <div className="size-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                       <Icon className="size-6 text-primary" />
                     </div>

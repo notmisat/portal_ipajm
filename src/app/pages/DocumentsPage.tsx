@@ -86,7 +86,7 @@ export function DocumentsPage() {
       {categoryFiltered.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {categoryFiltered.map((document) => (
-            <Card key={document.id} className="hover:shadow-md transition-shadow">
+            <Card key={document.id} className="hover:shadow-md transition-shadow flex flex-col h-full">
               <CardHeader>
                 <div className="flex items-start justify-between gap-2">
                   <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
@@ -99,7 +99,7 @@ export function DocumentsPage() {
                   {document.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-3 mt-auto">
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <span>{formatDate(document.uploadDate)}</span>
                   <span>{document.size}</span>
