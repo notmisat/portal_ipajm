@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { RootLayout } from './app/layouts/RootLayout';
 import { lazy } from 'react';
 
-// Lazy imports (adaptado para named exports)
+// Lazy imports
 const Dashboard = lazy(() =>
   import('./app/pages/Dashboard').then(module => ({
     default: module.Dashboard,
