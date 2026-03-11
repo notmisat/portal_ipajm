@@ -63,7 +63,7 @@ export function Dashboard() {
   return (
     <div className="space-y-8">
       {/* Welcome Section */}
-      <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-green-700 to-green-900 text-white p-8">
+      <div className="relative overflow-hidden rounded-lg bg-linear-to-br from-green-700 to-green-900 text-white p-8">
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-2">
             <Sparkles className="size-6" />

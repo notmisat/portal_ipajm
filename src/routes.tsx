@@ -1,55 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { RootLayout } from './app/layouts/RootLayout';
-import { lazy } from 'react';
-
-// Lazy imports
-const Dashboard = lazy(() =>
-  import('./app/pages/Dashboard').then(module => ({
-    default: module.Dashboard,
-  }))
-);
-
-const EventsPage = lazy(() =>
-  import('./app/pages/EventsPage').then(module => ({
-    default: module.EventsPage,
-  }))
-);
-
-const AnnouncementsPage = lazy(() =>
-  import('./app/pages/AnnouncementsPage').then(module => ({
-    default: module.AnnouncementsPage,
-  }))
-);
-
-const FAQPage = lazy(() =>
-  import('./app/pages/FAQPage').then(module => ({
-    default: module.FAQPage,
-  }))
-);
-
-const DocumentsPage = lazy(() =>
-  import('./app/pages/DocumentsPage').then(module => ({
-    default: module.DocumentsPage,
-  }))
-);
-
-const HRPage = lazy(() =>
-  import('./app/pages/HRPage').then(module => ({
-    default: module.HRPage,
-  }))
-);
-
-const QuickLinksPage = lazy(() =>
-  import('./app/pages/QuickLinksPage').then(module => ({
-    default: module.QuickLinksPage,
-  }))
-);
-
-const NotFoundPage = lazy(() =>
-  import('./app/pages/NotFoundPage').then(module => ({
-    default: module.NotFoundPage,
-  }))
-);
+import { Dashboard } from './app/pages/Dashboard';
+import { EventsPage } from './app/pages/EventsPage';
+import { AnnouncementsPage } from './app/pages/AnnouncementsPage';
+import { FAQPage } from './app/pages/FAQPage';
+import { DocumentsPage } from './app/pages/DocumentsPage';
+import { HRPage } from './app/pages/HRPage';
+import { QuickLinksPage } from './app/pages/QuickLinksPage';
+import { NotFoundPage } from './app/pages/NotFoundPage';
 
 export const router = createBrowserRouter([
   {

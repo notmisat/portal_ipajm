@@ -43,7 +43,7 @@ import { filterByProfile } from '../utils/helpers';
 import { QuickLink } from '../types';
 import { toast } from 'sonner';
 
-// ─── Available icons for customization ─────────────────────────────────────
+// ─── Ícones disponíveis para personalização ─────────────────────────────────────
 const ICON_OPTIONS = [
   'Home', 'Settings', 'Users', 'Briefcase', 'DollarSign', 'FileText',
   'Clock', 'Heart', 'FolderOpen', 'GraduationCap', 'MessageSquare',
@@ -56,7 +56,7 @@ const ICON_OPTIONS = [
   'CheckCircle2', 'Info', 'Key', 'Landmark', 'Scale', 'Wallet',
 ];
 
-// ─── localStorage helpers ───────────────────────────────────────────────────
+// ─── Auxiliares do localStorage ─────────────────────────────────────────────────
 const STORAGE_KEY = (userId: string) => `ipajm-quick-links-v2-${userId}`;
 
 const loadFromStorage = (
@@ -74,7 +74,7 @@ const loadFromStorage = (
       };
     }
   } catch {
-    /* ignore */
+    /* ignorar */
   }
   return { external: defaultExt, internal: defaultInt };
 };
@@ -83,7 +83,7 @@ const saveToStorage = (userId: string, external: QuickLink[], internal: QuickLin
   try {
     localStorage.setItem(STORAGE_KEY(userId), JSON.stringify({ external, internal }));
   } catch {
-    /* ignore */
+    /* ignorar */
   }
 };
 
@@ -138,7 +138,7 @@ function DraggableLinkCard({
       const offset = monitor.getClientOffset();
       if (!offset) return;
 
-      // Allow swap when cursor crosses the midpoint (horizontal or vertical)
+      // Permitir troca quando o cursor cruzar o ponto médio (horizontal ou vertical).
       if (dragIndex < hoverIndex && offset.x < midX && offset.y < midY) return;
       if (dragIndex > hoverIndex && offset.x > midX && offset.y > midY) return;
 
@@ -160,12 +160,12 @@ function DraggableLinkCard({
             : 'border-border/60 bg-card hover:border-primary/40 hover:bg-accent/40'
         }`}
       >
-        {/* Drag handle */}
+        {/* Barra de rolagem */}
         <div className="absolute top-1.5 left-1/2 -translate-x-1/2 text-muted-foreground/40">
           <GripVertical className="size-4" />
         </div>
 
-        {/* Action buttons */}
+        {/* Botões de ação */}
         <div className="absolute top-1 right-1 flex gap-0.5">
           <button
             type="button"
@@ -203,7 +203,7 @@ function DraggableLinkCard({
     );
   }
 
-  // ── View mode ──
+  // ── Modo de visualização ──
   const cardClasses =
     'flex flex-col items-center justify-center p-6 rounded-xl border bg-card hover:bg-accent hover:shadow-md transition-all group';
 
@@ -269,7 +269,7 @@ function EditLinkModal({ link, onSave, onClose }: EditLinkModalProps) {
         </DialogHeader>
 
         <div className="space-y-5">
-          {/* Title input */}
+          {/* Entrada de título */}
           <div className="space-y-1.5">
             <Label htmlFor="edit-link-title">Nome do Link</Label>
             <Input
@@ -491,7 +491,7 @@ function QuickLinksSection({
         }`}
       >
         <CardHeader className="pb-3">
-          {/* Section header row */}
+          {/* Seção da linha do cabeçalho */}
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-center gap-2 min-w-0 flex-1">
               {headerIcon}
@@ -506,7 +506,7 @@ function QuickLinksSection({
               )}
             </div>
 
-            {/* Action buttons */}
+            {/* Botões de ação */}
             <div className="flex items-center gap-1.5 shrink-0">
               {isEditMode ? (
                 <>
@@ -601,7 +601,7 @@ function QuickLinksSection({
                 />
               ))}
 
-              {/* Inline "add" ghost card shown in edit mode */}
+              {/* Cartão fantasma "adicionar" embutido exibido no modo de edição */}
               {isEditMode && availableToAdd.length > 0 && (
                 <button
                   type="button"
@@ -637,7 +637,7 @@ function QuickLinksSection({
 export function QuickLinksPage() {
   const { currentUser } = useAuth();
 
-  // All state/hooks must be declared before any early returns
+  // Todas as declarações em state/hooks devem ser feitas antes de qualquer retorno antecipado.
   const [isEditingExternal, setIsEditingExternal] = useState(false);
   const [isEditingInternal, setIsEditingInternal] = useState(false);
   const [editingLink, setEditingLink] = useState<QuickLink | null>(null);
@@ -645,7 +645,7 @@ export function QuickLinksPage() {
   const [externalLinks, setExternalLinks] = useState<QuickLink[]>([]);
   const [internalLinks, setInternalLinks] = useState<QuickLink[]>([]);
 
-  // Load / reload when user changes
+  // Carregar/recarregar quando o usuário fizer alterações
   useEffect(() => {
     if (!currentUser || initialized === currentUser.id) return;
 
@@ -662,13 +662,13 @@ export function QuickLinksPage() {
     setInitialized(currentUser.id);
   }, [currentUser, initialized]);
 
-  // Persist changes
+  // Mudanças persistentes
   useEffect(() => {
     if (!currentUser || initialized !== currentUser.id) return;
     saveToStorage(currentUser.id, externalLinks, internalLinks);
   }, [externalLinks, internalLinks, initialized, currentUser]);
 
-  // Move handlers (stable references)
+  // Manipuladores de movimentação
   const moveExternal = useCallback((from: number, to: number) => {
     setExternalLinks((prev) => {
       const next = [...prev];
@@ -687,7 +687,7 @@ export function QuickLinksPage() {
     });
   }, []);
 
-  // Edit save handler
+  // Manipulador de edição e salvamento
   const handleSaveEdit = useCallback((id: string, title: string, icon: string) => {
     const update = (list: QuickLink[]) =>
       list.map((l) => (l.id === id ? { ...l, title, icon } : l));
@@ -697,7 +697,7 @@ export function QuickLinksPage() {
     toast.success('Link atualizado com sucesso!');
   }, []);
 
-  // ── Early return after hooks ──
+  // ── Retorno antecipado após hooks ──
   if (!currentUser) {
     return (
       <div className="text-center py-12 text-muted-foreground">
@@ -706,7 +706,7 @@ export function QuickLinksPage() {
     );
   }
 
-  // Derived data (safe to compute after null check)
+  // Dados derivados (seguros para calcular após null check)
   const allProfileLinks = filterByProfile(quickLinks, currentUser);
   const defaultExternalLinks = allProfileLinks.filter((l) => l.external);
   const defaultInternalLinks = allProfileLinks.filter((l) => !l.external);
@@ -726,7 +726,7 @@ export function QuickLinksPage() {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="space-y-8">
-        {/* ── Page header ── */}
+        {/* ── Cbeçalho da página ── */}
         <div>
           <h1 className="text-3xl font-bold mb-2">Acesso Rápido</h1>
           <p className="text-muted-foreground">
@@ -744,7 +744,7 @@ export function QuickLinksPage() {
           </div>
         </div>
 
-        {/* ── External Links Section ── */}
+        {/* ── Seção de links externos ── */}
         {defaultExternalLinks.length > 0 && (
           <QuickLinksSection
             title="Sistemas Externos"
@@ -771,7 +771,7 @@ export function QuickLinksPage() {
           />
         )}
 
-        {/* ── Internal Links Section ── */}
+        {/* ── Seção de links internos ── */}
         {defaultInternalLinks.length > 0 && (
           <QuickLinksSection
             title="Ferramentas Internas"
@@ -805,7 +805,7 @@ export function QuickLinksPage() {
           onClose={() => setEditingLink(null)}
         />
 
-        {/* ── Help tip ── */}
+        {/* ── Dica útil ── */}
         <Card className="bg-muted/30 border-dashed">
           <CardContent className="pt-5 pb-5">
             <div className="flex gap-3">

@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "type": "module",
   "contributors": [
-    {"name": "Davi Roque", "url": "https://github.com/DaviRockkk"},
-    {"name": "Guilherme Rodrigues", "url": "https://github.com/notmisat"}
+    { "name": "Davi Roque", "url": "https://github.com/DaviRockkk" },
+    { "name": "Guilherme Rodrigues", "url": "https://github.com/notmisat" }
   ],
   "scripts": {
     "build": "vite build",
@@ -74,8 +74,10 @@
     "@types/react-dom": "^19.2.3",
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "4.7.0",
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8",
     "rollup-plugin-visualizer": "^7.0.0",
-    "tailwindcss": "4.1.12",
+    "tailwindcss": "^4.2.1",
     "vite": "^6.4.1"
   },
   "peerDependencies": {
