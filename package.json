@@ -1,8 +1,12 @@
 {
-  "name": "@figma/my-make-file",
+  "name": "portal_ipajm",
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "contributors": [
+    { "name": "Davi Roque", "url": "https://github.com/DaviRockkk" },
+    { "name": "Guilherme Rodrigues", "url": "https://github.com/notmisat" }
+  ],
   "scripts": {
     "build": "vite build",
     "dev": "vite"

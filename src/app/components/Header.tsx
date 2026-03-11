@@ -61,31 +61,39 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+
       <div className="container mx-auto px-4">
+
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
+
             <div className="size-10 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-green-700">
               <img
                 src="/assets/logo-ipajm.png"
-                alt="IPAJM-ES Logo"
+                alt="Logo IPAJM"
                 className="size-full object-contain"
               />
             </div>
 
             <div className="hidden sm:block">
-              <div className="font-bold text-lg leading-none">IPAJM-ES</div>
+              <div className="font-bold text-lg leading-none">
+                IPAJM-ES
+              </div>
               <div className="text-xs text-muted-foreground">
                 Portal Inteligente
               </div>
             </div>
+
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
+
             {navigation.map((item) => {
               const Icon = item.icon;
+
               return (
                 <Link
                   key={item.name}
@@ -101,9 +109,10 @@ export function Header() {
                 </Link>
               );
             })}
+
           </nav>
 
-          {/* Search and User Menu */}
+          {/* Search + User */}
           <div className="flex items-center gap-4">
 
             <div className="hidden md:block">
@@ -112,7 +121,9 @@ export function Header() {
 
             {currentUser && (
               <DropdownMenu>
+
                 <DropdownMenuTrigger asChild>
+
                   <Button variant="ghost" className="flex items-center gap-2">
 
                     <Avatar className="size-8">
@@ -126,17 +137,22 @@ export function Header() {
                     </span>
 
                     <ChevronDown className="size-4" />
+
                   </Button>
+
                 </DropdownMenuTrigger>
 
                 <DropdownMenuContent align="end" className="w-56">
+
                   <DropdownMenuLabel>
+
                     <div className="flex flex-col">
                       <span>{currentUser.name}</span>
                       <span className="text-xs font-normal text-muted-foreground">
                         {currentUser.sector}
                       </span>
                     </div>
+
                   </DropdownMenuLabel>
 
                   <DropdownMenuSeparator />
@@ -146,11 +162,13 @@ export function Header() {
                   </DropdownMenuLabel>
 
                   {mockUsers.map((user) => (
+
                     <DropdownMenuItem
                       key={user.id}
                       onClick={() => login(user.id)}
                       className={currentUser.id === user.id ? 'bg-accent' : ''}
                     >
+
                       <User className="mr-2 size-4" />
 
                       <div className="flex flex-col">
@@ -159,7 +177,9 @@ export function Header() {
                           {user.profile.toUpperCase()}
                         </span>
                       </div>
+
                     </DropdownMenuItem>
+
                   ))}
 
                   <DropdownMenuSeparator />
@@ -170,28 +190,33 @@ export function Header() {
                   </DropdownMenuItem>
 
                 </DropdownMenuContent>
+
               </DropdownMenu>
             )}
 
-            {/* Mobile menu button */}
+            {/* Mobile Menu */}
             <Button
               variant="ghost"
               size="icon"
               className="lg:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
+
               {mobileMenuOpen ? (
                 <X className="size-5" />
               ) : (
                 <Menu className="size-5" />
               )}
+
             </Button>
 
           </div>
+
         </div>
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
+
           <div className="lg:hidden border-t py-4">
 
             <div className="md:hidden mb-4">
@@ -199,6 +224,7 @@ export function Header() {
             </div>
 
             <nav className="flex flex-col gap-2">
+
               {navigation.map((item) => {
                 const Icon = item.icon;
 
@@ -218,11 +244,15 @@ export function Header() {
                   </Link>
                 );
               })}
+
             </nav>
 
           </div>
+
         )}
+
       </div>
+
     </header>
   );
 }

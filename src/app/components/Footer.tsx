@@ -110,12 +110,10 @@ export function Footer() {
                 <Phone className="size-4" />
                 <span>(27) 3636-4247</span>
               </li>
-
               <li className="flex items-center gap-2">
                 <Mail className="size-4" />
                 <span>suporte@ipajm.es.gov.br</span>
               </li>
-
               <li className="flex items-start gap-2">
                 <MapPin className="size-4 shrink-0 mt-0.5" />
                 <span>

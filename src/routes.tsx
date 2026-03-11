@@ -1,13 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { AnnouncementsPage } from './app/pages/AnnouncementsPage';
-import { Dashboard } from './app/pages/Dashboard';
-import { DocumentsPage } from './app/pages/DocumentsPage';
-import { EventsPage } from './app/pages/EventsPage';
-import { FAQPage } from './app/pages/FAQPage';
-import { HRPage } from './app/pages/HRPage';
 import { RootLayout } from './app/layouts/RootLayout';
-import { NotFoundPage } from './app/pages/NotFoundPage';
+import { Dashboard } from './app/pages/Dashboard';
+import { EventsPage } from './app/pages/EventsPage';
+import { AnnouncementsPage } from './app/pages/AnnouncementsPage';
+import { FAQPage } from './app/pages/FAQPage';
+import { DocumentsPage } from './app/pages/DocumentsPage';
+import { HRPage } from './app/pages/HRPage';
 import { QuickLinksPage } from './app/pages/QuickLinksPage';
+import { NotFoundPage } from './app/pages/NotFoundPage';
 
 export const router = createBrowserRouter([
   {
