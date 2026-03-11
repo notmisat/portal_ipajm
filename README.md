@@ -1,11 +1,7 @@
+## Executando o código
 
-  # Portal inteligente IPAJM
+`npm i` para instalar as dependências.
 
-  This is a code bundle for Portal inteligente IPAJM. The original project is available at https://www.figma.com/design/88oqzzgX1YTld7WPgEReEP/Portal-inteligente-IPAJM.
+`npm run dev` para iniciar o servidor de desenvolvimento.
 
-  ## Running the code
-
-  Run `npm i` to install the dependencies.
-
-  Run `npm run dev` to start the development server.
-  # portal_ipajm
+`npm run dev -- --host` para iniciar o servidor de desenvolvimeto remoto.
