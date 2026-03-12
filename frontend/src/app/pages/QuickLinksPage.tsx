@@ -606,7 +606,7 @@ function QuickLinksSection({
                 <button
                   type="button"
                   onClick={() => setShowAddModal(true)}
-                  className="flex flex-col items-center justify-center p-3 pt-7 pb-3 rounded-xl border-2 border-dashed border-muted-foreground/20 hover:border-primary/50 hover:bg-accent/40 transition-all text-muted-foreground min-h-[90px]"
+                  className="flex flex-col items-center justify-center p-3 pt-7 pb-3 rounded-xl border-2 border-dashed border-muted-foreground/20 hover:border-primary/50 hover:bg-accent/40 transition-all text-muted-foreground min-h-22.5"
                 >
                   <Plus className="size-5 mb-1" />
                   <span className="text-xs">Adicionar</span>

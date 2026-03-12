@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { RootLayout } from './app/layouts/RootLayout';
+import { RootLayout } from './layouts/RootLayout';
 import { Dashboard } from './app/pages/Dashboard';
 import { EventsPage } from './app/pages/EventsPage';
 import { AnnouncementsPage } from './app/pages/AnnouncementsPage';
