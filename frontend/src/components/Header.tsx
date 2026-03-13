@@ -88,7 +88,7 @@ export function Header() {
 
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Navegação Desktop */}
           <nav className="hidden lg:flex items-center gap-1">
 
             {navigation.map((item) => {
@@ -112,7 +112,7 @@ export function Header() {
 
           </nav>
 
-          {/* Search + User */}
+          {/* Pesquisar + Usuário */}
           <div className="flex items-center gap-4">
 
             <div className="hidden md:block">
@@ -194,7 +194,7 @@ export function Header() {
               </DropdownMenu>
             )}
 
-            {/* Mobile Menu */}
+            {/* Menu Mobile */}
             <Button
               variant="ghost"
               size="icon"
@@ -214,7 +214,7 @@ export function Header() {
 
         </div>
 
-        {/* Mobile Navigation */}
+        {/* NavegaçãoMobile */}
         {mobileMenuOpen && (
 
           <div className="lg:hidden border-t py-4">

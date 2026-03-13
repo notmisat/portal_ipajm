@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Input } from '../components/ui/input';
-import { Badge } from '../components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
+import { Input } from '../../components/ui/input';
+import { Badge } from '../../components/ui/badge';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '../components/ui/accordion';
-import { mockFAQs } from '../data/mockData';
-import { searchItems } from '../utils/helpers';
+} from '../../components/ui/accordion';
+import { mockFAQs } from '../../data/mockData';
+import { searchItems } from '../../utils/helpers';
 import { Search, HelpCircle } from 'lucide-react';
 
 export function FAQPage() {

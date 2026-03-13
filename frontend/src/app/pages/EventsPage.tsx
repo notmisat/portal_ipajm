@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { Card, CardContent } from '../components/ui/card';
-import { Button } from '../components/ui/button';
-import { Badge } from '../components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import { EventCard } from '../components/EventCard';
-import { mockEvents } from '../data/mockData';
-import { filterBySector, formatDate } from '../utils/helpers';
+import { useAuth } from '../../contexts/AuthContext';
+import { Card, CardContent } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
+import { EventCard } from '../../components/EventCard';
+import { mockEvents } from '../../data/mockData';
+import { filterBySector, formatDate } from '../../utils/helpers';
 import { Calendar as CalendarIcon, List, Filter } from 'lucide-react';
 
 export function EventsPage() {
@@ -47,7 +47,7 @@ export function EventsPage() {
         </p>
       </div>
 
-      {/* Filters */}
+      {/* Filtros */}
       <Card>
         <CardContent className="pt-6">
           <div className="flex items-center gap-2 mb-4">
@@ -75,7 +75,7 @@ export function EventsPage() {
         </CardContent>
       </Card>
 
-      {/* Events Tabs */}
+      {/* Janelas de Eventos */}
       <Tabs defaultValue="upcoming" className="space-y-6">
         <TabsList>
           <TabsTrigger value="upcoming" className="gap-2">

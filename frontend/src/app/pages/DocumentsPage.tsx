@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Input } from '../components/ui/input';
-import { Button } from '../components/ui/button';
-import { Badge } from '../components/ui/badge';
-import { mockDocuments } from '../data/mockData';
-import { filterBySector, searchItems, formatDate } from '../utils/helpers';
+import { useAuth } from '../../contexts/AuthContext';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
+import { Input } from '../../components/ui/input';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
+import { mockDocuments } from '../../data/mockData';
+import { filterBySector, searchItems, formatDate } from '../../utils/helpers';
 import { Search, Download, FileText, Filter } from 'lucide-react';
 
 export function DocumentsPage() {

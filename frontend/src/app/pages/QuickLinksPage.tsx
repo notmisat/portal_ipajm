@@ -24,11 +24,11 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-} from '../components/ui/card';
-import { Button } from '../components/ui/button';
-import { Badge } from '../components/ui/badge';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
+} from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
+import { Input } from '../../components/ui/input';
+import { Label } from '../../components/ui/label';
 import {
   Dialog,
   DialogContent,
@@ -36,11 +36,11 @@ import {
   DialogTitle,
   DialogFooter,
   DialogDescription,
-} from '../components/ui/dialog';
-import { useAuth } from '../contexts/AuthContext';
-import { quickLinks } from '../data/mockData';
-import { filterByProfile } from '../utils/helpers';
-import { QuickLink } from '../types';
+} from '../../components/ui/dialog';
+import { useAuth } from '../../contexts/AuthContext';
+import { quickLinks } from '../../data/mockData';
+import { filterByProfile } from '../../utils/helpers';
+import { QuickLink } from '../../types';
 import { toast } from 'sonner';
 
 // ─── Ícones disponíveis para personalização ─────────────────────────────────────
@@ -606,7 +606,7 @@ function QuickLinksSection({
                 <button
                   type="button"
                   onClick={() => setShowAddModal(true)}
-                  className="flex flex-col items-center justify-center p-3 pt-7 pb-3 rounded-xl border-2 border-dashed border-muted-foreground/20 hover:border-primary/50 hover:bg-accent/40 transition-all text-muted-foreground min-h-[90px]"
+                  className="flex flex-col items-center justify-center p-3 pt-7 pb-3 rounded-xl border-2 border-dashed border-muted-foreground/20 hover:border-primary/50 hover:bg-accent/40 transition-all text-muted-foreground min-h-22.5"
                 >
                   <Plus className="size-5 mb-1" />
                   <span className="text-xs">Adicionar</span>

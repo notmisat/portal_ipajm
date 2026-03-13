@@ -28,7 +28,7 @@ export const mockUsers: User[] = [
   },
 ];
 
-// Quick links by profile
+// Quick links por perfil
 export const quickLinks: QuickLink[] = [
   // Admin links
   {
@@ -45,7 +45,7 @@ export const quickLinks: QuickLink[] = [
     icon: 'Users',
     profiles: ['admin', 'rh'],
   },
-  // RH links
+  // Links do RH
   {
     id: '3',
     title: 'Portal RH',
@@ -60,7 +60,7 @@ export const quickLinks: QuickLink[] = [
     icon: 'DollarSign',
     profiles: ['rh', 'gestor'],
   },
-  // Servidor links - External URLs
+  // Links de Servidor - URLs Externo
   {
     id: '13',
     title: 'IPAJM',
@@ -157,7 +157,7 @@ export const quickLinks: QuickLink[] = [
     profiles: ['servidor'],
     external: true,
   },
-  // General links
+  // Links Gerais
   {
     id: '5',
     title: 'Solicitações',
@@ -216,7 +216,7 @@ export const quickLinks: QuickLink[] = [
   },
 ];
 
-// Events
+// Eventos
 export const mockEvents: Event[] = [
   {
     id: '1',
@@ -278,7 +278,7 @@ export const mockEvents: Event[] = [
   },
 ];
 
-// Announcements
+// Anúncios
 export const mockAnnouncements: Announcement[] = [
   {
     id: '1',
@@ -377,7 +377,7 @@ export const mockFAQs: FAQ[] = [
   },
 ];
 
-// Documents
+// Documentos
 export const mockDocuments: Document[] = [
   {
     id: '1',

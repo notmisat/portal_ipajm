@@ -1,8 +1,8 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Button } from '../components/ui/button';
-import { Badge } from '../components/ui/badge';
-import { mockHRHighlights } from '../data/mockData';
-import { formatDate } from '../utils/helpers';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
+import { mockHRHighlights } from '../../data/mockData';
+import { formatDate } from '../../utils/helpers';
 import { 
   Heart, 
   Briefcase, 
@@ -33,7 +33,7 @@ export function HRPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-pink-600 to-rose-800 text-white p-8">
+      <div className="relative overflow-hidden rounded-lg bg-linear-to-br from-pink-600 to-rose-800 text-white p-8">
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-2">
             <Heart className="size-6" />
@@ -51,7 +51,7 @@ export function HRPage() {
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Stats */}
+      {/* Status */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
@@ -106,7 +106,7 @@ export function HRPage() {
         </div>
       </div>
 
-      {/* Benefits Overview */}
+      {/* Overview dos Benefícios */}
       <div>
         <h2 className="text-2x font-bold mb-6">Principais Benefícios</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -131,7 +131,7 @@ export function HRPage() {
         </div>
       </div>
 
-      {/* Programs */}
+      {/* Programas */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="bg-blue-50 border-blue-200">
           <CardHeader>
@@ -179,7 +179,7 @@ export function HRPage() {
         </Card>
       </div>
 
-      {/* Contact */}
+      {/* Contatos */}
       <Card className="bg-muted/50">
         <CardHeader>
           <CardTitle>Entre em Contato com o RH</CardTitle>
@@ -192,7 +192,7 @@ export function HRPage() {
             <strong>Email:</strong> rh@ipajm.es.gov.br
           </p>
           <p className="text-sm">
-            <strong>Telefone:</strong> (27) 3333-4444 - Ramal 200
+            <strong>Telefone:</strong> (27) 3636-4247 - Ramal 200
           </p>
           <p className="text-sm">
             <strong>Horário:</strong> Segunda a Sexta, 8h às 18h

@@ -129,8 +129,8 @@
   }
 
   /**
-  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
-  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  * Estilos tipográficos padrão para elementos HTML (h1-h4, p, label, button, input).
+  * Estes estão na base @layer, portanto, as classes utilitárias do Tailwind (como text-sm, text-lg) os substituem automaticamente.
   */
 
   html {

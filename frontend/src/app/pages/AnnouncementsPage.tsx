@@ -1,20 +1,20 @@
 import { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { Card, CardContent } from '../components/ui/card';
-import { Button } from '../components/ui/button';
-import { Badge } from '../components/ui/badge';
-import { AnnouncementCard } from '../components/AnnouncementCard';
+import { useAuth } from '../../contexts/AuthContext';
+import { Card, CardContent } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
+import { AnnouncementCard } from '../../components/AnnouncementCard';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '../components/ui/dialog';
-import { mockAnnouncements } from '../data/mockData';
-import { filterBySector, formatDate } from '../utils/helpers';
+} from '../../components/ui/dialog';
+import { mockAnnouncements } from '../../data/mockData';
+import { filterBySector, formatDate } from '../../utils/helpers';
 import { Bell, Filter } from 'lucide-react';
-import { Announcement } from '../types';
+import { Announcement } from '../../types';
 
 export function AnnouncementsPage() {
   const { currentUser } = useAuth();
@@ -47,7 +47,7 @@ export function AnnouncementsPage() {
         </p>
       </div>
 
-      {/* Filters */}
+      {/* Filtros */}
       <Card>
         <CardContent className="pt-6">
           <div className="flex items-center gap-2 mb-4">
@@ -72,7 +72,7 @@ export function AnnouncementsPage() {
         </CardContent>
       </Card>
 
-      {/* Announcements List */}
+      {/* Lista Anúncios */}
       <div className="space-y-4">
         {filteredAnnouncements.length > 0 ? (
           filteredAnnouncements.map((announcement) => (
@@ -94,7 +94,7 @@ export function AnnouncementsPage() {
         )}
       </div>
 
-      {/* Announcement Detail Dialog */}
+      {/* Detalhes do Comunicado */}
       <Dialog open={!!selectedAnnouncement} onOpenChange={() => setSelectedAnnouncement(null)}>
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           {selectedAnnouncement && (

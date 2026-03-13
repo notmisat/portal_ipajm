@@ -1,21 +1,21 @@
-import { useAuth } from '../contexts/AuthContext';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Badge } from '../components/ui/badge';
-import { Button } from '../components/ui/button';
-import { EventCard } from '../components/EventCard';
-import { AnnouncementCard } from '../components/AnnouncementCard';
+import { useAuth } from '../../contexts/AuthContext';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
+import { Badge } from '../../components/ui/badge';
+import { Button } from '../../components/ui/button';
+import { EventCard } from '../../components/EventCard';
+import { AnnouncementCard } from '../../components/AnnouncementCard';
 import { 
   quickLinks, 
   mockEvents, 
   mockAnnouncements,
   mockHRHighlights 
-} from '../data/mockData';
+} from '../../data/mockData';
 import { 
   filterByProfile, 
   filterBySector, 
   getUpcomingEvents,
   getRecentAnnouncements 
-} from '../utils/helpers';
+} from '../../utils/helpers';
 import { 
   Calendar, 
   Bell, 
